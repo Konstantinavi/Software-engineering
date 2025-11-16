@@ -1,0 +1,3 @@
+text=input("Введите текст")
+def split_sentenses(text):
+ sentences = re.split(r'(?<=[.?!])\s+', text.strip())
