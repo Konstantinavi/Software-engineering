@@ -1,1 +1,9 @@
 text=input("Введите текст")
+def short_text(st):
+    while '(' in st or ')' in st:
+        left = st.rfind('(')
+        right = st.find(')', left)
+        st = st.replace(st[left:right + 1], '')
+    return st
+print("Original text: " + text)
+print("Short text: " + short_text(text))
