@@ -1,0 +1,8 @@
+text=input("Введите текст")
+def abbreviatyra(text):
+     words=text.split()
+     abbreviatyra=' '
+     for word in words :
+         if len(word)>=3:
+         abbreviatyra+=word[0].upper()
+return abbreviatyra
