@@ -6,3 +6,4 @@ def abbreviatyra(text):
          if len(word)>=3:
          abbreviatyra+=word[0].upper()
 return abbreviatyra
+print("Аббревиатура",abbreviatyra(text))
