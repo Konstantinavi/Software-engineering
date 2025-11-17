@@ -13,3 +13,14 @@ def read_command(filename):
             parts[1].strip(),
             parts[2].strip()
         )
+def read_commands_data(filename):
+    commands=[]
+    file = open(filename, 'r',encoding='utf-8')
+    for line in file:
+       parts=line.strip().split('\t')
+       commands_data= (
+         parts[0].strip(),
+         parts[1].strip(),
+         )
+       commands.append(commands_data)
+    return commands 
