@@ -24,3 +24,11 @@ def read_commands_data(filename):
          )
        commands.append(commands_data)
     return commands 
+def decode (werb):
+    word=""
+    for i in range(len(werb)):
+        if werb.isdigit():
+            word =word+werb[i+1]*int(werb[i]-1)
+        else:
+            word=word+werb[i]
+    return word
