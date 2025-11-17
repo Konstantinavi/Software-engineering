@@ -1,3 +1,7 @@
+import re
 text=input("Введите текст")
 def split_sentenses(text):
- sentences = re.split(r'(?<=[.?!])\s+', text.strip())
+sentences = re.split(r'(?<=[.?!])\s+', text)
+for sentence in sentences:
+    print(sentence.strip())
+print(f"Предложений в тексте: {len(sentences)}")
