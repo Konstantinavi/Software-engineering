@@ -1,3 +1,15 @@
-def decode_rle(sequence):
-    result = []
-    i = 0
+import string
+import re
+file_commands = 'commands.0.txt'
+file_proteins = 'sequences.0.txt'
+def read_command(filename):
+    proteins = []
+    file = open(filename, 'r', encoding='utf-8')
+
+    for line in file:
+        parts = line.strip().split('\t')
+        protein_data = (
+            parts[0].strip(),
+            parts[1].strip(),
+            parts[2].strip()
+        )
