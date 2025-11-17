@@ -5,7 +5,6 @@ file_proteins = 'sequences.0.txt'
 def read_command(filename):
     proteins = []
     file = open(filename, 'r', encoding='utf-8')
-
     for line in file:
         parts = line.strip().split('\t')
         protein_data = (
@@ -32,3 +31,33 @@ def decode (werb):
         else:
             word=word+werb[i]
     return word
+def search_data (protein):
+    search=""
+    protein=decode(protein)
+    proteins=read_command(file_proteins)
+    for i in range(len(proteins)):
+        if (protein[i])[2].find(protein):
+            search=(proteins[i])[1]+" "+ (proteins[i])[2]
+    if search=="":
+        return 'NOT FOUND'
+    else:
+        return search
+def mode (protein):
+    proteins=read_command(file_proteins)
+    mode_app=""
+    for i in range(len(proteins)):
+        if (proteins[0]) == protein:
+            mode_app=(proteins[i])[2]
+    if protein == "":
+        return 'MISSING'
+    letters = dict()
+    for i in mode_app:
+        letters[i]=letters.get(i,0)+1
+    letters_app = max(letters,key=letters.get)
+    max_ver = letters[letters_app]
+    for i in sorted(letters):
+        if letters[i]==max_ver:
+              letters_app=i
+              break
+    return letters_app,max_ver
+
