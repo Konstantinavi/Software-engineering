@@ -81,7 +81,12 @@ def mode(data, protein):
                     break
             return answer_letter, max_value
     return 'MISSING'
-
+data1 = genetic_data('sequences.0.txt')
+file = open('genedata.txt', 'w', encoding = 'utf-8')
+file.write('Angelina Konstantinavichyus\n')
+file.write('Genetic Searching\n')
+file.write('-' * 74 + '\n')
+commands_ = read_commands('commands.0.txt')
 for index, command in enumerate(commands_):
     operation = command[0]
     param = command[1]
