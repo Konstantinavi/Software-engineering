@@ -171,4 +171,18 @@ def visualize_data(users):
     plt.title('Эффективность тренировок (калории)')
     plt.xticks(rotation=45)
     plt.show()
-
+if __name__ == "__main__":
+    print("Загрузка данных ")
+    users = load_users_data()
+    workouts = load_workouts_data()
+    # Задача 1: Общая статистика
+    get_stats(users, workouts)
+    # Задача 2: Анализ активности и типов тренировок
+    analyze_user_activity(users)
+    analyze_workout_types(workouts)
+    boris_workouts = find_user_workouts(users, "Борис")
+    boris = next((u for u in users if u['name'].lower() == "боріс".lower()), None)
+    if boris:
+        analyze_user(boris, boris_workouts)
+    # Задача 3: Визуализация
+    visualize_data(users)
