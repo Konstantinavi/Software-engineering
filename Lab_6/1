@@ -89,7 +89,7 @@ def analyze_user_activity(users):
         print(f"   Тренировок: {stat['workouts']}")
         print(f"   Калорий: {stat['calories']}")
         print(f"   Время: {stat['hours']:.1f} часов")
-    def analyze_workout_types(workouts):
+def analyze_workout_types(workouts):
     """Анализирует распределение по типам тренировок"""
     type_stats = Counter()
     type_details = {}
@@ -112,4 +112,9 @@ def analyze_user_activity(users):
         print(f"  {workout_type}: {count} тренировок ({percentage:.1f}%)")
         print(f"    Средняя длительность: {avg_duration:.0f} мин")
         print(f"    Средние калории: {avg_calories:.0f} ккал")
-
+def find_user_workouts(users, user_name):
+    """Находит тренировки пользователя по имени"""
+    user = next((u for u in users if u['name'].lower() == user_name.lower()), None)
+    if user:
+        return [w for w in user['workouts']]
+    return []
