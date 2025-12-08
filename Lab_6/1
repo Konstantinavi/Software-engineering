@@ -144,3 +144,31 @@ def analyze_user(user, workouts):
     print(f"Пройдено дистанции: {total_distance:.1f} км")
     print(f"Средние калории за тренировку: {avg_calories:.0f}")
     print(f"Любимый тип тренировки: {favorite_type}")
+def visualize_data(users):
+    """Визуализация данных"""
+    workouts = load_workouts_data()
+
+    # 1. Круговая диаграмма типов тренировок
+    type_counts = Counter(w['type'] for w in workouts)
+    plt.figure(figsize=(12, 10))
+
+    plt.subplot(2, 2, 1)
+    plt.pie(type_counts.values(), labels=type_counts.keys(), autopct='%1.1f%%')
+    plt.title('Распределение по типам тренировок')
+
+    # 2. Столбчатая диаграмма активности пользователей
+    plt.subplot(2, 2, 2)
+    user_names = [u['name'] for u in users]
+    user_workouts = [len(u['workouts']) for u in users]
+    plt.bar(user_names, user_workouts)
+    plt.title('Активность пользователей')
+    plt.xticks(rotation=45)
+
+    # 3. Столбчатая диаграмма калорий по пользователям
+    plt.subplot(2, 2, 3)
+    user_calories = [sum(w['calories'] for w in u['workouts']) for u in users]
+    plt.bar(user_names, user_calories)
+    plt.title('Эффективность тренировок (калории)')
+    plt.xticks(rotation=45)
+    plt.show()
+
